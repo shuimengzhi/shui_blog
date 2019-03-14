@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/my.css">
+
+  
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/main.css">
+
+        <style type="text/css">
+        	
+        	
+
+        </style>
+
+
+       			
+</head>
+    <body>
+
+      <form action="php/registe.php" method="post" id="form" name="registration">
+      
+        <h1>Sign Up</h1>
+        
+        <fieldset>
+          <legend>你的基础信息</legend>
+          <label for="name">名字:</label>
+          <input type="text" id="name" name="user_name" placeholder="zhangsan" required>
+          
+          <label for="mail">Email:</label>
+          <input type="email" id="mail" name="user_email" placeholder="zhangsan@gmail.com" onkeyup="ValidateEmail(); return false;" required>
+          
+          <label for="password">密码:</label>
+          <input type="password" id="password" name="user_password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+          
+          
+          <label for="confirm_password">再次输入密码:</label>
+          <input type="password" id="confirm_password" name="confirm_password" onkeyup="checkPass(); return false;"  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;" required>
+          <span class="confirmMessage" id="confirmMessage"></span>
+          
+          
+          <label for="mobile">电话:</label>
+          <input type="mobile" id="mobile" name="user_mobile" required>
+            
+          <label for="age">年龄</label>
+          <input type="number" id="age" name="user_age" required>
+                      
+          <label>性别</label>
+          <input type="radio" id="under_13" value="男" name="user_gender"><label for="under_13" class="light">男</label><br>
+          <input type="radio" id="over_13" value="女" name="user_gender"><label for="over_13" class="light">女</label>
+            
+          
+            
+        
+        </fieldset>
+        
+      
+        <button type="submit">注册</button>
+      </form>
+      <!-- value="submit" name="submit" -->
+ 		<!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript">
+    	$(function () {
+        $("#btnSubmit").click(function () {
+            var password = $("#password").val();
+            var confirmPassword = $("#confirm_password").val();
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        	});
+    	});
+		</script> this script is regarding appearing dialog box --> 
+		
+		<script type="text/javascript">
+			function checkPass(){
+			var password = document.getElementById("password");
+			var confirmPassword= document.getElementById("confirm_password");
+
+			var message = document.getElementById("confirmMessage");
+
+			var goodColor = "#66cc66";
+			var badColor = "#ff6666";
+
+			if(password.value ==  confirmPassword.value)
+			{
+				confirmPassword.style.backgroundColor = goodColor;
+				message.innerHTML = "密码输入成功!"
+			}
+			else{
+				confirmPassword.style.backgroundColor = badColor;
+				message.style.color = badColor;
+				messase.innerHTML= "密码错误"
+			}
+
+
+
+					function ValidateEmail(mail)   
+					{  
+					 if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))  
+					  {  
+					    return (true)  
+					  }  
+					    alert("您输入了一个无效的电子邮件地址!")  
+					    return (false)  
+					}  
+
+
+
+		}
+	</script>
+
+
+	
+
+		
+
+	</body>
+
+</html>
