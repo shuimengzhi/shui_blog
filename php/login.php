@@ -18,8 +18,11 @@ $userpassword=$_POST["user_password"];
 }
 else{
     //echo mysqli_num_rows($result);
+    //验证成功则跳转主页面
    if(mysqli_num_rows($result)>0){
-    header('Location:../home.html');
+    session_start();
+    $_SESSION["user_email"]=$useremail;
+    header('Location:../home.php');
     mysqli_close($conect_db);
     exit();
    }
