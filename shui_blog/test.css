@@ -1,0 +1,13 @@
+header{font-size: 66px ; text-align: center  }
+article{text-align: center}
+a{color: black;}
+b{text-align: center;}
+.entry-content{margin-left:auto;
+    margin-right:auto;
+    width:45%;}
+.talk{font-size: 25px;}
+.textarea{resize: none;}
+.submit{margin-left: 92%;}
+.email_text{font-size: 10px;margin-left:300px;
+    }
+.title{text-align: center;}
