@@ -1,5 +1,3 @@
-<!--删除文章-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,22 +40,20 @@
                          else{
                                 echo "connect successful!";
                          }*/
+                         $a=$_GET['id'];
                          mysqli_select_db($conect_db,USER_INFO);
-                         $sql="SELECT title from article";
-                         $result=mysqli_query($conect_db,$sql);
+                        $sql="DELETE FROM article WHERE title='{$a}';DELETE FROM talk_area WHERE title='{$a}';";
+                         $result=mysqli_multi_query($conect_db,$sql);
+                        if(!$result){
+                             die("删除失败出错:".mysqli_error($conect_db));
+                         }
+                         else{
+                             echo "<script>alert('删除文章成功');</script>";
+                             echo "<script>window.location.href='../admin/admin_home.php');</script>";
+                             
+                         }
                  ?> 
-                 <h5>TITLE</h5>
-                 <p>-----------------------------------------------------------------------------------------</p>
-                    <?PHP
-                    while($row=mysqli_fetch_array($result,MYSQLI_BOTH)){
-                        $a=$row['title'];
-                        echo "<p class='entry-content'>{$row['title']}                 <a href='http://localhost:8888/shui_blog/admin/delete_articl_action.php?id={$a}'>删除</a></p>";
-                        echo "<p>-----------------------------------------------------------------------------------------
-
-                        </p>";
-                    }
-                    ?>
-                    </table>
+                 
                 </div>
             </div>
          

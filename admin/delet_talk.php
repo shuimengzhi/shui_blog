@@ -22,6 +22,7 @@
                 <li><a rel="nofollow" href="delet_talk.php" class="a">删除用户评论</a></li>
                 <li><a rel="nofollow" href="add_articl.php" class="a">发表文章</a></li>
                 <li><a rel="nofollow" href="delete_articl.php" class="a">删除文章</a></li>
+                <li><a rel="nofollow" href="change_picture.php" class="a">更改滚动栏图片和分类</a></li>
             </ul>
             </div>
             <!--操作内容-->
@@ -41,11 +42,16 @@
                                 echo "connect successful!";
                          }*/
                          mysqli_select_db($conect_db,USER_INFO);
-                         $sql='SELECT talk_id,talk_email,talk_content from talk_area';
+                         $sql='SELECT talk_id,title,talk_email,talk_content from talk_area';
                          $result=mysqli_query($conect_db,$sql);
-                         //具体删除和显示评论的功能未完成，先完成文章的添加和文章的评论功能
+                       
                          while($row=mysqli_fetch_array($result,MYSQLI_BOTH)){
-                             echo ""
+                             echo "title:{$row[title]}<{$row[talk_email]}>:{$row[talk_content]}";
+                             echo "<form action='delet_talk_action.php' method='POST'>";
+                             echo "<input type='hidden' value='{$row[talk_id]}' name='id'>";
+                             echo "<p>-------------------------------------------------------<input type='submit' value='删除'></p>";
+                             echo "</form>";
+                             
                          }
                  ?> 
             </div>

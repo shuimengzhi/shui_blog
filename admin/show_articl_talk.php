@@ -8,7 +8,7 @@ $dbemail=$_SESSION['user_email'];
 $a=$_POST["hidden_title"];
 //数据库选择
 mysqli_select_db($conect_db,USER_INFO);
-$sql="INSERT INTO talk_area(title,talk_email,talk_content) VALUES('{$a}','$dbemail','$dbtalk_content');";
+$sql="INSERT INTO talk_area(title,talk_email,talk_content) VALUES('$a','$dbemail','$dbtalk_content');";
 $result=mysqli_query($conect_db,$sql);
 //检测是否评价成功
 if(!$result){
@@ -17,7 +17,10 @@ if(!$result){
 else{
    echo"评论成功<br/>";
    mysqli_close($conect_db);
-   header('Location:../home.php');
+   /*echo "<form action='show_articl.php' method='POST'>";
+   echo "<input type=hidden name='kuku' value=$a> ";
+   echo "</form>";*/
+   header("Location:../admin/show_articl.php?id=$a");
    exit();
 }
 ?>

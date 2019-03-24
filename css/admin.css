@@ -59,3 +59,15 @@ input[type="submit"]{
 .good{
     text-align: center;
 }
+.talk{margin-left:auto;
+    margin-right:auto;}
+
+.textarea{resize: none;}
+.title{text-align: center;}
+.entry-content{margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    width:60%;}
+h5{
+    text-align: center;
+}

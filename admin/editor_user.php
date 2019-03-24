@@ -21,6 +21,7 @@
                 <li><a rel="nofollow" href="delet_talk.php" class="a">删除用户评论</a></li>
                 <li><a rel="nofollow" href="add_articl.php" class="a">发表文章</a></li>
                 <li><a rel="nofollow" href="delete_articl.php" class="a">删除文章</a></li>
+                <li><a rel="nofollow" href="change_picture.php" class="a">更改滚动栏图片和分类</a></li>
             </ul>
             </div>
             <!--操作内容-->

@@ -9,6 +9,11 @@
  mysqli_select_db($conect_db,USER_INFO);
 $useremail=$_POST["user_email"];
 $userpassword=$_POST["user_password"];
+
+//管理员账号密码
+$admin_account="666@gmail.com";
+$admin_password="admin";
+$a=(($useremail==$admin_account)&&($userpassword==$admin_password));
  $sql="SELECT *FROM register_info WHERE email='$useremail' AND password='$userpassword'";
 
  $result=mysqli_query($conect_db,$sql);
@@ -19,6 +24,10 @@ $userpassword=$_POST["user_password"];
 else{
     //echo mysqli_num_rows($result);
     //验证成功则跳转主页面
+    //如果是管理员则进入后台
+    if($a)
+    { header('Location:../admin/admin_home.php');}
+    else{
    if(mysqli_num_rows($result)>0){
     session_start();
     $_SESSION["user_email"]=$useremail;
@@ -29,6 +38,7 @@ else{
    else{
        echo"账号或者密码错误";
    }
+  }
 }
 mysqli_close($conect_db);
 ?>
