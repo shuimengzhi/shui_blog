@@ -25,30 +25,29 @@
             </ul>
             </div>
              <!--操作内容-->
+             
              <div  id="content_body"> 
              <form  method="post" enctype="multipart/form-data">
-  Upload Img:<input type="file" name="img"/>
-             <input type="submit" value="Upload"/>
+             选择更改第几个图片信息：<br>
+             <input type="radio" name="pic_id" value="1">1<br>
+             <input type="radio" name="pic_id" value="2">2<br>
+             <input type="radio" name="pic_id" value="3">3<br>
+             <input type="radio" name="pic_id" value="4">4<br>
+             图片标题：<br>
+             <input type="text"  name="pic_title" value=""><br>
+             图片简介：限15个字<br>
+             <input type="text"  name="pic_content" value=""><br>
+             Upload Img:<br>
+             <input type="file" name="img"/><br><br><br>
+             <input type="submit" value="提交"/>
              </form>
                  <?php 
-                       //连接数据库
-                      $dbserver_name="localhost:8889";
-                      $dbuser_name="root";
-                      $dbpassword="root";
-                     //连接数据库
-                      $conect_db=mysqli_connect($dbserver_name,$dbuser_name,$dbpassword);
-                       //判断是否连接成功（测试用）
-                       /*if(!$conect_db){
-                          die("connect error:".mysqli_error($conect_db));
-                         }
-                         else{
-                                echo "connect successful!";
-                         }*/
-                         
+                                        
                          // 接收文件
                         //var_dump($_FILES); // 区别于$_POST、$_GET
                         //print_r($_FILES);
                         $file = $_FILES["img"];
+                       
                         // 先判断有没有错
                         if ($file["error"] == 0) {
                         // 成功 
@@ -61,7 +60,8 @@
                         if(in_array($typeArr[1], $imgType)){ // 图片格式是数组中的一个
                         // 类型检查无误，保存到文件夹内
                         // 给图片定一个新名字 (使用时间戳，防止重复)
-                        $imgname = "../img/".time().".".$typeArr[1];
+                        $othersrc="img/".time().".".$typeArr[1];
+                        $imgname = "../".$othersrc;
                           // 将上传的文件写入到文件夹中
                            // 参数1: 图片在服务器缓存的地址
                            // 参数2: 图片的目的地址（最终保存的位置）
@@ -81,6 +81,41 @@
                          // 失败
                          echo $file["error"];
                         };
+                         //连接数据库
+                      $dbserver_name="localhost:8889";
+                      $dbuser_name="root";
+                      $dbpassword="root";
+                     //连接数据库
+                      $conect_db=mysqli_connect($dbserver_name,$dbuser_name,$dbpassword);
+                       //判断是否连接成功（测试用）
+                       /*if(!$conect_db){
+                          die("connect error:".mysqli_error($conect_db));
+                         }
+                         else{
+                                echo "connect successful!";
+                         }*/
+                         //将表中的数据填入数据库
+                         $pic_id=$_POST["pic_id"];
+                         $pic_src=$othersrc;
+                         $pic_title=$_POST["pic_title"];
+                         $pic_content=$_POST["pic_content"];
+                         //选择数据库
+                         mysqli_select_db($conect_db,USER_INFO);
+                        $sql="UPDATE pic_info SET pic_src='{$pic_src}',pic_title='{$pic_title}',pic_content='{$pic_content}' WHERE id='{$pic_id}'";
+                        $result=mysqli_query($conect_db,$sql);
+                        if(!$conect_db){
+                            die("connect error:".mysqli_error($conect_db));
+                           }
+                           else{
+                                  echo "connect successful!";
+                           }
+                        if(!$result){
+                            die("修改失败:".mysqli_error($conect_db));
+                           }
+                           else{
+                                  echo "修改成功";
+                           }
+                           mysqli_close($conect_db);
                 ?> 
              </div>
             </div>

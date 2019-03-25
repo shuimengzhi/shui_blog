@@ -1,6 +1,6 @@
 header{font-size: 66px ; text-align: center  }
 article{text-align: center}
-a{color: black;}
+
 b{text-align: center;}
 .entry-content{margin-left:auto;
     margin-right:auto;
@@ -8,6 +8,13 @@ b{text-align: center;}
 .talk{font-size: 25px;}
 .textarea{resize: none;}
 .submit{margin-left: 92%;}
-.email_text{font-size: 10px;margin-left:300px;
+.email_text{font-size: 10px;margin-left:300px;color: black;
     }
 .title{text-align: center;}
+.carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+    margin-left:auto;
+    margin-right:auto;
+    width:60%;
+}
+.good{color: black;}
