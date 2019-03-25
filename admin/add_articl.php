@@ -45,14 +45,18 @@
                  <form method="POST">
                      <b>标题：</b><input type="text" name="title"><br>
                      <p class="talk">文章内容</p><textarea class="textarea" rows="10" cols="100" name="content"></textarea>
+                     <br>
+                     <input type="radio" value="教育类" name="lei">教育类<br>
+                     <input type="radio" value="如何思考类" name="lei">如何思考类<br> 
                      <input type="submit" name=submit value="提交">                     
                  </form>
                  <?php
                  $t=$_POST["title"];
                  $c=$_POST["content"];
+                 $l=$_POST["lei"];
                   if(!$t==null){
                       mysqli_select_db($conect_db,USER_INFO);
-                      $sql="INSERT INTO article(title,content) VALUES ('$t','$c')";
+                      $sql="INSERT INTO article(title,content,lei) VALUES ('$t','$c','$l')";
                       $result=mysqli_query($conect_db,$sql);
                       if(!$result){
                         die("发表失败<br/>".mysqli_error($conect_db));

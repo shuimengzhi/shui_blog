@@ -96,14 +96,26 @@
     <div class=entry-content>
         <?php
          
-           $sql="SELECT title from article";
+           $sql="SELECT * from article";
            $result=mysqli_query($conect_db,$sql);
+           $result1=mysqli_query($conect_db,$sql);
+           echo "------------<h5>教育类</h5>-------------<br>";
            while($row=mysqli_fetch_array($result,MYSQLI_BOTH))
-           {$a=$row['title'];
+           { if($row["lei"]=="教育类")
+            { $a=$row['title'];
               
               echo "<a class=good href='http://localhost:8888/shui_blog/admin/show_articl.php?id={$a}'>{$a}</a><br>";
-              echo "-----------------------------------------------------------------<br>";
-           }?>
+              echo "-----------------------------------------------------------------<br>";}
+           }
+           echo "------------<h5>如何思考类</h5>-------------<br>";
+           while($k=mysqli_fetch_array($result1,MYSQLI_BOTH))
+           { if($k["lei"]=="如何思考类")
+            { $a=$k['title'];
+              
+              echo "<a class=good href='http://localhost:8888/shui_blog/admin/show_articl.php?id={$a}'>{$a}</a><br>";
+              echo "-----------------------------------------------------------------<br>";}
+           }
+           ?>
         
              
     </div><!-- .entry-content -->
@@ -121,7 +133,7 @@
        }*/
        
        while($row=mysqli_fetch_array($result,MYSQLI_BOTH))
-       {
+       {   
            echo "{$row['talk_email']}<br/>";
            echo "{$row['talk_content']}<br/>";
            echo "--------------------------------------------------------------<br/>";
